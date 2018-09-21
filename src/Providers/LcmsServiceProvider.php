@@ -12,6 +12,7 @@ class LcmsServiceProvider extends ServiceProvider {
         $this->loadMigrationsFrom(__DIR__.'/../Migrations');
         $this->loadTranslationsFrom(__DIR__.'/../Translations', 'cms');
         $this->loadViewsFrom(__DIR__.'/../Views', 'cms');
+        $this->mergeConfigFrom(__DIR__.'/../../config/cms.php', 'cms');
 
         $this->publishes([
             __DIR__.'/../../assets/dist' => public_path('vendor/cms')
@@ -20,7 +21,6 @@ class LcmsServiceProvider extends ServiceProvider {
 
     public function register ()
     {
-
     }
 
     public function provides ()

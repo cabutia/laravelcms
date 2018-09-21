@@ -1,5 +1,7 @@
 @extends('cms::layout.base')
 
+@section('title', 'Dashboard')
+
 @section('content')
-    <h1 class="title">Welcome!</h1>
+    Hello
 @endsection

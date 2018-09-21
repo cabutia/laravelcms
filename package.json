@@ -12,5 +12,8 @@
     "devDependencies": {
         "cross-env": "^5.2.0",
         "laravel-mix": "^2.1.14"
+    },
+    "dependencies": {
+        "uikit": "^3.0.0-rc.16"
     }
 }
