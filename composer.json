@@ -10,10 +10,16 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
     "autoload": {
         "psr-4": {
-            "LaravelCMS\\": "src/"
+            "LaravelCMS\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelCMS\\Providers\\LcmsServiceProvider"
+            ]
         }
     }
 }
