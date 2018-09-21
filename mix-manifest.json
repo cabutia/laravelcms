@@ -1,4 +1,4 @@
 {
-    "/assets/dist/cms.js": "/assets/dist/cms.js",
-    "/assets/dist/cms.css": "/assets/dist/cms.css"
+    "/public/cms.js": "/public/cms.js",
+    "/public/cms.css": "/public/cms.css"
 }

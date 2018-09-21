@@ -1,4 +1,4 @@
 let mix = require('laravel-mix')
 
-mix.sass('assets/scss/cms.scss', 'assets/dist')
-   .js('assets/js/cms.js', 'assets/dist')
+mix.sass('src/Assets/scss/cms.scss', 'public')
+   .js('src/Assets/js/cms.js', 'public')
