@@ -1,0 +1,19 @@
+{
+    "name": "leandro-grg/lcms",
+    "description": "A simple CMS for laravel webs and web applications",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Gomez",
+            "email": "gleandro@ceres.solutions"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "LaravelCMS\\": "src/"
+        }
+    }
+}
