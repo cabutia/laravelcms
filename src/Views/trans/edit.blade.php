@@ -3,20 +3,22 @@
 @section('title', 'cms::ui.Add translation')
 
 @section('subcontent')
-    <form class="uk-form-horizontal" action="{{ route('cms::trans.store') }}" method="POST">
-        <legend class="uk-legend">@lang('cms::ui.Add a translated fragment')</legend>
+    <form class="uk-form-horizontal" action="{{ route('cms::trans.update') }}" method="POST">
+        @csrf
+        <input type="hidden" name="id" value="{{ $fragment->id }}" required>
+        <legend class="uk-legend">@lang('cms::ui.Update a fragment')</legend>
 
         <div class="uk-margin">
             <label class="uk-form-label" for="key">@lang('cms::forms.Key')</label>
             <div class="uk-form-controls">
-                <input type="text" name="key" value="{{ old('key') }}" class="uk-input" placeholder="e.g.: file.key" required>
+                <input type="text" name="key" value="{{ $fragment->key }}" class="uk-input" placeholder="e.g.: file.key" required>
             </div>
         </div>
 
         <div class="uk-margin">
             <label class="uk-form-label" for="value">@lang('cms::forms.Value')</label>
             <div class="uk-form-controls">
-                <input type="text" name="value" value="{{ old('value') }}" class="uk-input" placeholder="e.g.: This is a value" required>
+                <input type="text" name="value" value="{{ $fragment->value }}" class="uk-input" placeholder="e.g.: This is a value" required>
             </div>
         </div>
 
@@ -25,7 +27,8 @@
             <div class="uk-form-controls">
                 <select class="uk-select" name="language_id">
                     @foreach($languages as $language)
-                        <option value="{{ $language->id }}">{{ $language->name }}</option>
+                        <option {{ $language->id === $fragment->language->id ? 'selected' : '' }}
+                            value="{{ $language->id }}">{{ $language->name }}</option>
                     @endforeach
                 </select>
             </div>

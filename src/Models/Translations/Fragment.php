@@ -12,6 +12,6 @@ class Fragment extends Model
 
     public function language ()
     {
-        return $this->belongsTo('LaravelCMS\Models\Translations\Language')
+        return $this->belongsTo('LaravelCMS\Models\Translations\Language');
     }
 }

@@ -5,7 +5,10 @@ Route::prefix('cms')->namespace('LaravelCMS\Controllers')->group(function () {
     Route::prefix('/translations')->group(function () {
         Route::get('/', 'TransController@index')->name('cms::trans.index');
         Route::get('/add', 'TransController@create')->name('cms::trans.create');
+        Route::get('/edit/{id}', 'TransController@edit')->name('cms::trans.edit');
+        Route::post('/update', 'TransController@update')->name('cms::trans.update');
         Route::post('/store', 'TransController@store')->name('cms::trans.store');
+        Route::post('/delete', 'TransController@delete')->name('cms::trans.delete');
         Route::prefix('/languages')->group(function () {
             Route::get('/', 'TransController@languages')->name('cms::trans.languages.index');
             Route::get('/add', 'TransController@addLanguage')->name('cms::trans.languages.create');

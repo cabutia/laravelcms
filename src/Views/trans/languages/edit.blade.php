@@ -5,7 +5,7 @@
 @section('subcontent')
     <form class="uk-form-horizontal" action="{{ route('cms::trans.languages.update') }}" method="POST">
         @csrf
-        <input type="hidden" name="id" value="{{ $language->id }}">
+        <input type="hidden" name="id" value="{{ $language->id }}" required>
         <legend class="uk-legend">@lang('cms::ui.Update language data')</legend>
 
         <div class="uk-margin">
