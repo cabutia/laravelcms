@@ -12,6 +12,6 @@ class Language extends Model
 
     public function fragments ()
     {
-        
+        return $this->hasMany('LaravelCMS\Models\Translations\Fragment');
     }
 }

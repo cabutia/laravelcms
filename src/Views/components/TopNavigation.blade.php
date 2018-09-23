@@ -12,7 +12,10 @@
                     <a class="uk-icon-link"
                        uk-icon="{{ $navItem['icon'] }}"
                        uk-tooltip="title: {{ __($navItem['display']) }}; pos: bottom"
-                       href="{{ $navItem['route'] === '#' || $navItem['route'] === '' || !$navItem['route'] ? '#' : route($navItem['route'])}}">
+                       href="{{
+                           $navItem['route'] === '#' || $navItem['route'] === '' || !$navItem['route'] || !\Route::has($navItem['route'])
+                           ? '#' : route($navItem['route'])
+                       }}">
                    </a>
                 </li>
             @endforeach

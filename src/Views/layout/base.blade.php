@@ -13,8 +13,8 @@
 
         <div class="uk-section uk-section-default">
             <div class="uk-container uk-container-small uk-relative">
-                @yield('subnavigation')
                 <h1 class="uk-heading-divider">{{ __($__env->yieldContent('title')) }}</h1>
+                @yield('subnavigation')
                 @yield('content')
             </div>
         </div>

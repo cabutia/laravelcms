@@ -12,6 +12,11 @@ return [
             'route' => 'cms::dashboard',
             'icon' => 'home'
         ],
+        'help' => [
+            'display' => 'cms::ui.Help',
+            'route' => 'cms::help.index',
+            'icon' => 'info'
+        ],
         'translations' => [
             'display' => 'cms::ui.Translations',
             'route' => 'cms::trans.index',

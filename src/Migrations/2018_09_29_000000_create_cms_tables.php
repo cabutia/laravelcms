@@ -17,8 +17,8 @@ class CreateCMSTables extends Migration
 
         Schema::create($config['tables_prefix'] . 'languages', function (Blueprint $table) use ($config) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
