@@ -12,6 +12,13 @@
         @include('cms::components.TopNavigation')
 
         <div class="uk-section uk-section-default">
+            @errors
+            {{-- <pre>{!! var_dump([
+                    'errors' => isset($__cms_errors) ? $__cms_errors : session('__cms_errors'),
+                    'messages' => isset($__cms_messages) ? $__cms_messages : session('__cms_messages'),
+                    'successes' => isset($__cms_successes) ? $__cms_successes : session('__cms_successes'),
+                    'warnings' => isset($__cms_warnings) ? $__cms_warnings : session('__cms_warnings')
+                    ]) !!}</pre> --}}
             <div class="uk-container uk-container-small uk-relative">
                 <h1 class="uk-heading-divider">{{ __($__env->yieldContent('title')) }}</h1>
                 @yield('subnavigation')

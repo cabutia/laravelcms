@@ -1,6 +1,5 @@
 <?php
-
-Route::prefix('cms')->namespace('LaravelCMS\Controllers')->group(function () {
+Route::middleware('web')->prefix('cms')->namespace('LaravelCMS\Controllers')->group(function () {
     Route::get('/', 'DashboardController@index')->name('cms::dashboard');
     Route::prefix('/translations')->group(function () {
         Route::get('/', 'TransController@index')->name('cms::trans.index');

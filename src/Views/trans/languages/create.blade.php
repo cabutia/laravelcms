@@ -3,7 +3,9 @@
 @section('title', 'cms::ui.Add language')
 
 @section('subcontent')
+
     <form class="uk-form-horizontal" action="{{ route('cms::trans.languages.store') }}" method="POST">
+        @csrf
         <legend class="uk-legend">@lang('cms::ui.Add a language to the application')</legend>
 
         <div class="uk-margin">
