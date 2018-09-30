@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{{ is_route() }}
 <html lang="{{ \App::getLocale() }}">
     <head>
         <meta charset="utf-8">

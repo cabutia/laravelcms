@@ -1,6 +1,6 @@
 @extends('cms::trans.base')
 
-@section('title', 'cms::ui.Add translation')
+@section('title', 'cms::ui.Edit translation key')
 
 @section('subcontent')
     <form class="uk-form-horizontal" action="{{ route('cms::trans.update') }}" method="POST">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="uk-margin uk-align-right">
-            <button class="uk-button uk-button-primary">@lang('cms::forms.submit')</button>
+            <button class="uk-button uk-button-primary">@lang('cms::forms.Submit')</button>
         </div>
     </form>
 @endsection

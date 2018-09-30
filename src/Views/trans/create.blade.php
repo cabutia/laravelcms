@@ -33,7 +33,7 @@
         </div>
 
         <div class="uk-margin uk-align-right">
-            <button class="uk-button uk-button-primary">@lang('cms::forms.submit')</button>
+            <button class="uk-button uk-button-primary">@lang('cms::forms.Submit')</button>
         </div>
     </form>
 @endsection

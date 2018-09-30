@@ -1,8 +1,13 @@
 <?php
 
-// if (! function_exists('is_route') ) {
-    function is_route () {
-        echo "Yas, its a route!";
-        // dump(\Route::current()->getName());
+if (! function_exists('current_route') ) {
+    function current_route ($route) {
+        return \Route::current()->getName() == $route;
     }
-// }
+}
+
+if (! function_exists('active_class') ) {
+    function active_class ($route) {
+        return current_route($route) ? "class=uk-active" : '';
+    }
+}
