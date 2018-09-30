@@ -6,26 +6,61 @@ class MessageRenderer
 {
 
     protected $resource;
+    protected $resourceType;
 
     /**
      * Constructs the class
      */
     public function __construct ($resource, ...$args)
     {
-        $this->resource = $this->{'build'.ucwords($resource)}(...$args);
+        $this->resourceType = $resource;
+        $this->resource = $this->{'build'.ucwords($resource).'Alert'}(...$args);
     }
 
     /**
      * Builds the errors
-     * @return self
+     * @return view
      */
     public static function errors ($validationErrors = [], $errors = [])
     {
         $self = new self (
-            'errors',
+            'danger',
             $validationErrors ? $validationErrors : [],
             $errors ? $errors : []
         );
+        return $self->render();
+    }
+
+    /**
+     * Builds the messages
+     *
+     * @return view
+     */
+    public static function messages ($messages = [])
+    {
+        $self = new self ('message', $messages);
+        return $self->render();
+    }
+
+    /**
+     * Builds the successes
+     *
+     * @return view
+     */
+    public static function successes ($successes = [])
+    {
+        $self = new self ('primary', $successes);
+        return $self->render();
+    }
+
+    /**
+     * Builds the successes
+     *
+     * @return view
+     */
+    public static function warnings ($warnings = [])
+    {
+        $self = new self ('warning', $warnings);
         return $self->render();
     }
 
@@ -35,19 +70,41 @@ class MessageRenderer
      */
     private function render ()
     {
-        $template = 'Hello :)';
-        return $template;
+        echo view('cms::components.Alerts')->with([
+            'resourceType' => $this->resourceType,
+            'resource' => $this->resource ? $this->resource : []
+        ])->render();
     }
 
     /**
      * Builds the errors
      */
-    private function buildErrors ($validationErrors, $errors)
+    private function buildDangerAlert ($validationErrors, $errors)
     {
-        dump([
-            'Validation' => $validationErrors,
-            'Error messages' => $errors
-        ]);
-        return '';
+        return array_merge($validationErrors, $errors);
+    }
+
+    /**
+     * Builds the messages
+     */
+    private function buildMessageAlert ($messages = [])
+    {
+        return $messages;
+    }
+
+    /**
+     * Builds the successes
+     */
+    private function buildPrimaryAlert ($successes = [])
+    {
+        return $successes;
+    }
+
+    /**
+     * Builds the warnings
+     */
+    private function buildWarningAlert ($warnings = [])
+    {
+        return $warnings;
     }
 }

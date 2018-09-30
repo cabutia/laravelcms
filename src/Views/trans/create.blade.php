@@ -4,6 +4,7 @@
 
 @section('subcontent')
     <form class="uk-form-horizontal" action="{{ route('cms::trans.store') }}" method="POST">
+        @csrf
         <legend class="uk-legend">@lang('cms::ui.Add a translated fragment')</legend>
 
         <div class="uk-margin">

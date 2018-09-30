@@ -13,7 +13,10 @@
     "autoload": {
         "psr-4": {
             "LaravelCMS\\": "src"
-        }
+        },
+        "files": [
+            "src/Helpers/functions.php"
+        ]
     },
     "extra": {
         "laravel": {

@@ -43,13 +43,29 @@ class LcmsServiceProvider extends ServiceProvider {
 
     private function registerBladeDirectives ()
     {
-        \Blade::directive('errors', function ($expression) {
+
+        \Blade::directive('alerts', function ($expression) {
             return "<?php
-                echo LaravelCMS\Helpers\MessageRenderer::errors(
-                    \$errors->any() ? \$errors->all() : [],
-                    isset(\$__cms_errors) ? \$__cms_errors : session('__cms_errors')
-                );
-            ?>";
+                    // Render errors
+                    LaravelCMS\Helpers\MessageRenderer::errors(
+                        \$errors->any() ? \$errors->all() : [],
+                        isset(\$__cms_errors) ? \$__cms_errors : session('__cms_errors')
+                    );
+
+                    // Render messages
+                    LaravelCMS\Helpers\MessageRenderer::messages(
+                        isset(\$__cms_messages) ? \$__cms_messages : session('__cms_messages')
+                    );
+
+                    // Render successes
+                    LaravelCMS\Helpers\MessageRenderer::successes(
+                        isset(\$__cms_successes) ? \$__cms_successes : session('__cms_successes')
+                    );
+
+                    // Render warnings
+                    LaravelCMS\Helpers\MessageRenderer::warnings(
+                        isset(\$__cms_warnings) ? \$__cms_warnings : session('__cms_warnings')
+                    ); ?>";
         });
     }
 }
