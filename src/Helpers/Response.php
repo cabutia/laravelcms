@@ -26,10 +26,10 @@ class Response
     /**
      * Constructs the class
      */
-    public function __construct ($responseType, $resource)
+    public function __construct ($responseType, $resource, ...$args)
     {
         $this->type = strtolower($responseType);
-        $this->response = $this->{'build'.ucwords($responseType).'Response'}($resource);
+        $this->response = $this->{'build'.ucwords($responseType).'Response'}($resource, ...$args);
     }
 
     /**
@@ -66,9 +66,10 @@ class Response
      * Builds a redirect response
      * @return this
      */
-    public function buildRedirectResponse ($to, $route = true)
+    public function buildRedirectResponse ($to, $route = true, $prefix = true)
     {
-        $this->redirect = app('redirect')->to($route ? route('cms::'.$to) : $to, 302, [], null);
+        $url = !$route ? $to : ($prefix ? 'cms::'.$to : $to);
+        $this->redirect = app('redirect')->to($route ? route($url) : $url, 302, [], null);
         return $this;
     }
 

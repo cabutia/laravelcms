@@ -2,6 +2,9 @@
 
 namespace LaravelCMS\Controllers;
 
+use App;
+use Cache;
+
 use Illuminate\Http\Request;
 use LaravelCMS\Helpers\Response;
 use LaravelCMS\Models\Translations\Language;
@@ -58,6 +61,7 @@ class TransController extends Controller
     {
         $fragment = Fragment::find($id);
         $languages = Language::all();
+        $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : null;
         return Response::view('trans.edit')
             ->with(compact('fragment', 'languages'))
             ->send();
@@ -73,7 +77,11 @@ class TransController extends Controller
         ]);
 
         $fragment = Fragment::find($request->id);
+        Cache::forget(App::getLocale().'.'.$fragment->key);
         $fragment->update($data);
+        if ($request->redirect) {
+            return Response::redirect($request->redirect, false)->send();
+        }
         return Response::redirect('trans.index')
             ->with(compact('fragment'))
             ->send();

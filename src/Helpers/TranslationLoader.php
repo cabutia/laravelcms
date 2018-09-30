@@ -11,6 +11,7 @@ class TranslationLoader
 {
     public static function load ($key) {
         $lang = App::getLocale();
+        Cache::flush();
         return Cache::remember($lang.'.'.$key, 3600, function () use ($key, $lang) {
             $language = Language::where('slug', $lang)->first();
             if (!$language) {
@@ -21,7 +22,11 @@ class TranslationLoader
             if (!$fragment) {
                 return '###'.$key;
             };
-            return $fragment->value;
+            $uid = 'CMS__'.uniqid();
+            return view('cms::components.FragmentEdition')->with([
+                'uid' => $uid,
+                'fragment' => $fragment
+            ])->render();
         });
 
     }

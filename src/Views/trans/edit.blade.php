@@ -6,6 +6,9 @@
     <form class="uk-form-horizontal" action="{{ route('cms::trans.update') }}" method="POST">
         @csrf
         <input type="hidden" name="id" value="{{ $fragment->id }}" required>
+        @if (isset($_GET['redirect']))
+            <input type="hidden" name="redirect" value="{{ $_GET['redirect'] }}">
+        @endif
         <legend class="uk-legend">@lang('cms::ui.Update a fragment')</legend>
 
         <div class="uk-margin">

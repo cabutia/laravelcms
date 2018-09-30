@@ -43,6 +43,11 @@ class LcmsServiceProvider extends ServiceProvider {
 
     private function registerBladeDirectives ()
     {
+        \Blade::directive('trans', function ($expression) {
+            return "<?php
+                echo LaravelCMS\Helpers\TranslationLoader::load($expression);
+            ?>";
+        });
 
         \Blade::directive('alerts', function ($expression) {
             return "<?php
